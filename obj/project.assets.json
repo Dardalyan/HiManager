@@ -2926,11 +2926,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/dardalyan/Desktop/DotNet/Projects/HiManager/HiManager/HiManager.csproj",
+      "projectUniqueName": "/Users/dardalyan/Documents/PORTFOLYO/NETCORE/DotNet/Projects/HiManager/HiManager/HiManager.csproj",
       "projectName": "HiManager",
-      "projectPath": "/Users/dardalyan/Desktop/DotNet/Projects/HiManager/HiManager/HiManager.csproj",
+      "projectPath": "/Users/dardalyan/Documents/PORTFOLYO/NETCORE/DotNet/Projects/HiManager/HiManager/HiManager.csproj",
       "packagesPath": "/Users/dardalyan/.nuget/packages/",
-      "outputPath": "/Users/dardalyan/Desktop/DotNet/Projects/HiManager/HiManager/obj/",
+      "outputPath": "/Users/dardalyan/Documents/PORTFOLYO/NETCORE/DotNet/Projects/HiManager/HiManager/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/dardalyan/.nuget/NuGet/NuGet.Config"

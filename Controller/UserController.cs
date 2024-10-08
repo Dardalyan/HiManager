@@ -26,6 +26,17 @@ public class UserController : ControllerBase
         _roleService = roleService;
     }
 
+    [HttpGet]
+    [Route("api/user/current")]
+    public async Task<IResult> GetCurrentUser()
+    {
+        User current_user = await _currentUserService.GetCurrentUser();
+        if (current_user == null)
+            return Results.BadRequest();
+        else
+            return Results.Ok(current_user);
+    }
+
     // CREATE User by given fields.
     [HttpPost]
     [Route("api/user/create")]

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ropRVlr0c/X8RWt2t+3+A4OexxZEbBGJQev9SXkIsTXwISZ2aWSV9cGVeIJJFQwt31P/qdlvH0DOTC49NSTJvg==",
+  "dgSpecHash": "iLOfBpXAXQ3lKrLD6LGpBDfzxfY68xs44i576hl6gfPv0bEUCyzUYL+nZGPZQid4bEdVEaYchBrooo7i6uE6qQ==",
   "success": true,
-  "projectFilePath": "/Users/dardalyan/Desktop/DotNet/Projects/HiManager/HiManager/HiManager.csproj",
+  "projectFilePath": "/Users/dardalyan/Documents/PORTFOLYO/NETCORE/DotNet/Projects/HiManager/HiManager/HiManager.csproj",
   "expectedPackageFiles": [
     "/Users/dardalyan/.nuget/packages/bouncycastle.cryptography/2.3.1/bouncycastle.cryptography.2.3.1.nupkg.sha512",
     "/Users/dardalyan/.nuget/packages/google.protobuf/3.26.1/google.protobuf.3.26.1.nupkg.sha512",
