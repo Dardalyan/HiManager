@@ -8,4 +8,5 @@ public interface IRoleRepository
     public Task<Role> GetRoleByUidWithRoleName(int uid,string name);
 
     public Task<List<User>> GetUsersByRoleName(string roleName);
+    public Task<bool> RemoveAllRoles(int userID);
 }

@@ -22,6 +22,15 @@ public class RoleRepository :IRoleRepository
         return true;
     }
 
+
+    public async Task<bool> RemoveAllRoles(int userID)
+    {
+        var result = await _dbContext.Role.Where(r => r.Uid == userID).ToListAsync();
+        _dbContext.Role.RemoveRange(result);
+        await _dbContext.SaveChangesAsync();
+        return true; 
+    }
+
     public async Task<List<User>> GetUsersByRoleName(string roleName)
     {
         var result = await _dbContext.User.Include(u => u.Roles)

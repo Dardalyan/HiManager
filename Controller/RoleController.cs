@@ -41,6 +41,7 @@ public class RoleController : ControllerBase
         
         if (Role.CheckRoleHierarchyStatus(current_user, target_user))
         {
+            await _roleService.RemoveAllRoles(target_user.Id); 
             foreach (var role in userRoleDto.Roles)
             {
                 switch (role)

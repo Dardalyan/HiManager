@@ -26,6 +26,19 @@ public class RoleService
         }
     }
     
+    public async Task<bool> RemoveAllRoles(int userID)
+    {
+        try
+        {
+            return await _roleRepository.RemoveAllRoles(userID);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);  
+            return false;
+        }
+    }
+    
     public async Task<List<User>> GetUsersByRoleName(string roleName)
     {
         try
