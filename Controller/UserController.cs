@@ -48,6 +48,12 @@ public class UserController : ControllerBase
         {
             if (Role.IsCurrentUserHasAuthority(current_user))
             {
+
+                if (await _userService.GetUserByEmail(user.Email) != null)
+                {
+                    response.Add("alert","User is already exist with given email !"); 
+                    return Results.BadRequest(response);
+                }
                 
                 User newUser = new User();
                 foreach (var pDTO in user.GetType().GetProperties())
