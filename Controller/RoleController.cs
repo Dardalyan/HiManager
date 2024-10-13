@@ -41,6 +41,8 @@ public class RoleController : ControllerBase
         
         if (Role.CheckRoleHierarchyStatus(current_user, target_user))
         {
+            // FIRST REMOVES ALL ROLES , THEN ADDS THE ROLES ACCORDING TO GIVEN LIST,
+            // UNLESS YOU WANT TO LOSE YOUR ROLES, OLD ROLES MUST BE PROVIDED AGAIN !
             await _roleService.RemoveAllRoles(target_user.Id); 
             foreach (var role in userRoleDto.Roles)
             {
