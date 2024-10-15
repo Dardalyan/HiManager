@@ -176,11 +176,11 @@ public class UserController : ControllerBase
         
     }
     
-    // GET all users except current.
+    // GET all users, except the current user.
     // If current user has authority (is not a just employee), c_u can get all the users information
     [HttpGet]
     [Route("api/user/all")]
-    public async Task<IResult> AllUsers()
+    public async Task<IResult> AllUsers() 
     {
         Dictionary<string, object> response = new Dictionary<string, object>();
         
