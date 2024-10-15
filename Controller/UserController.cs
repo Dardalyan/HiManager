@@ -176,7 +176,7 @@ public class UserController : ControllerBase
         
     }
     
-    // GET all users.
+    // GET all users except current.
     // If current user has authority (is not a just employee), c_u can get all the users information
     [HttpGet]
     [Route("api/user/all")]
@@ -188,7 +188,8 @@ public class UserController : ControllerBase
         if (Role.IsCurrentUserHasAuthority(currentUser))
         {
             List<User> allUsers = await _userService.GetAllUsers();
-            response.Add("users",allUsers);
+            allUsers.Remove(currentUser); 
+            response.Add("users",allUsers); 
             return Results.Ok(response);
         }
         else
