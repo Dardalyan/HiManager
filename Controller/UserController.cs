@@ -164,7 +164,7 @@ public class UserController : ControllerBase
             else
             {
                 await _userService.DeleteUser(user);
-                response.Add("deleter_user",user);
+                response.Add("deleted_user",user);
                 return Results.Ok(response);
             }
         }
