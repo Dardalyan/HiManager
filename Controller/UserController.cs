@@ -71,6 +71,7 @@ public class UserController : ControllerBase
                 if (newUser != null)
                 {
                     response.Add("message","User has been created successfully !");
+                    response.Add("user",newUser); 
                     return Results.Ok(response);
                 }
                 else
