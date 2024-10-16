@@ -29,13 +29,17 @@ public class AuthController: ControllerBase
 
         User user = await _service.GetUserByEmail(authUser.Email);
 
+        if ((user.Roles.Count == 1 && user.Roles.First().RoleName == "employee") || user.Roles.Count == 0)
+            return Results.Unauthorized();
         
-         if (user.Password == authUser.Password)
-           {
-               string jwt = _tokenService.GenerateJWTToken(user); 
-               response.Add("token",jwt);
-               return Results.Ok(response);
-           }
+        
+        if (user.Password == authUser.Password)
+        {
+            string jwt = _tokenService.GenerateJWTToken(user); 
+            response.Add("token",jwt);
+            return Results.Ok(response);
+        }
+            
          
         response.Add("alert","Email or Password is not correct !");
         return Results.BadRequest(response);
