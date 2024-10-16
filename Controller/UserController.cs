@@ -150,30 +150,23 @@ public class UserController : ControllerBase
     public async Task<IResult> DeleteUser(int id)
     {
         Dictionary<string, object> response = new Dictionary<string, object>();
-        
         User user = await _userService.GetUserById(id);
-        User currentUser = await _currentUserService.GetCurrentUser();
+        User currentUser = await _currentUserService.GetCurrentUser(); 
 
-        if (Role.CheckRoleHierarchyStatus(currentUser,user))
+        if (Role.CheckRoleHierarchyStatus(currentUser,user)) 
         {
             if (user == null)
             {
                 response.Add("alert",$"User cannot be found with id:{id} !");
-                return Results.NotFound(response);
+                return Results.NotFound(response); 
             }
-            else
-            {
+            
                 await _userService.DeleteUser(user);
                 response.Add("deleted_user",user);
                 return Results.Ok(response);
-            }
         }
-        else
-        {
             response.Add("alert","You are not allowed !");
-            return Results.BadRequest(response);
-        }
-        
+            return Results.BadRequest(response); 
     }
     
     // GET all users, except the current user.
