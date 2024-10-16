@@ -115,16 +115,13 @@ public class UserController : ControllerBase
         {
             foreach (var propDTO in user.GetType().GetProperties())
             {
-                if (propDTO.Name != "Email" || propDTO.Name != "email")
-                {
                     foreach (var propTU in targetUser.GetType().GetProperties())
                     {
                         if (propDTO.Name == propTU.Name && propDTO.GetValue(user) != null)
                         {
                             propTU.SetValue(targetUser,propDTO.GetValue(user)); 
                         }
-                    }
-                }
+                    } 
             }
 
             targetUser = await _userService.UpdateUser(targetUser);
