@@ -25,16 +25,16 @@ public class UserController : ControllerBase
         _userService = userService;
         _roleService = roleService;
     }
-
+ 
     [HttpGet]
-    [Route("api/user/current")]
+    [Route("api/user/current")] 
     public async Task<IResult> GetCurrentUser()
     {
         User current_user = await _currentUserService.GetCurrentUser();
         if (current_user == null)
             return Results.BadRequest();
-        else
-            return Results.Ok(current_user);
+        
+        return Results.Ok(current_user); 
     }
 
     // CREATE User by given fields.
@@ -74,24 +74,16 @@ public class UserController : ControllerBase
                     response.Add("user",newUser); 
                     return Results.Ok(response);
                 }
-                else
-                {
-                    response.Add("alert","User cannot be created !");
-                    response.Add("message","DB error has occured !");
-                    return Results.BadRequest(response);
-                }
-            }
-            else
-            {
-                response.Add("alert","You are not allowed !");
+                response.Add("alert","User cannot be created !");
+                response.Add("message","DB error has occured !");
                 return Results.BadRequest(response);
             }
-        }
-        else
-        {
-            response.Add("alert",$"Please give the required fields -> {string.Join(", ", user.ShowNullProps())}, " );
+            response.Add("alert","You are not allowed !");
             return Results.BadRequest(response);
         }
+
+        response.Add("alert",$"Please give the required fields -> {string.Join(", ", user.ShowNullProps())}, " );
+        return Results.BadRequest(response);
     }
     
     // UPDATE user by given fields. 
@@ -131,11 +123,9 @@ public class UserController : ControllerBase
                 response.Add("updated_user",targetUser);
                 return Results.Ok(response);
             }
-            else
-            {
-                response.Add("alert","User cannot be updated !");
-                return Results.BadRequest(response);
-            }
+
+            response.Add("alert","User cannot be updated !");
+            return Results.BadRequest(response);
             
         }
         
@@ -161,9 +151,9 @@ public class UserController : ControllerBase
                 return Results.NotFound(response); 
             }
             
-                await _userService.DeleteUser(user);
-                response.Add("deleted_user",user);
-                return Results.Ok(response);
+            await _userService.DeleteUser(user);
+            response.Add("deleted_user",user);
+            return Results.Ok(response);
         }
             response.Add("alert","You are not allowed !");
             return Results.BadRequest(response); 
@@ -185,11 +175,10 @@ public class UserController : ControllerBase
             response.Add("users",allUsers); 
             return Results.Ok(response);
         }
-        else
-        {
-            response.Add("alert","You are not allowed !");
-            return Results.BadRequest(response);
-        }
+
+        response.Add("alert","You are not allowed !");
+        return Results.BadRequest(response);
+
     }
 
     
@@ -209,19 +198,16 @@ public class UserController : ControllerBase
             response.Add("alert",$"User cannot be found with id {id} !");
             return Results.NotFound(response);
         }
-        else
+
+        if (Role.IsCurrentUserHasAuthority(currentUser))
         {
-            if (Role.IsCurrentUserHasAuthority(currentUser))
-            {
-                response.Add("user",user);
-                return Results.Ok(response);
-            }
-            else
-            {
-                response.Add("alert","You are not allowed !");
-                return Results.BadRequest(response);
-            }
+            response.Add("user",user);
+            return Results.Ok(response);
         }
+
+        response.Add("alert","You are not allowed !");
+        return Results.BadRequest(response);
+        
         
     }
 }

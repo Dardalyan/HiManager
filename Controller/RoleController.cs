@@ -70,12 +70,9 @@ public class RoleController : ControllerBase
             response.Add("message","Roles: {"+ $"{String.Join(",",userRoleDto.Roles)}"+"} have been appointed succesfully ! "); 
             return Results.Ok(response);
         }
-        else
-        {
-            response.Add("message","You are not allowed !");  
-            return Results.BadRequest(response);
-        }
-
+         
+        response.Add("message","You are not allowed !");  
+        return Results.BadRequest(response);
     }
     
     
